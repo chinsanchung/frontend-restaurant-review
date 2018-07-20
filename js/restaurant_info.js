@@ -57,6 +57,8 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
 
   const image = document.getElementById('restaurant-img');
   image.className = 'restaurant-img'
+  //change : Give alt attribute to restaurant's image.
+  image.setAttribute("alt", `This is ${restaurant.name} image`);
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
 
   const cuisine = document.getElementById('restaurant-cuisine');
@@ -96,6 +98,7 @@ fillRestaurantHoursHTML = (operatingHours = self.restaurant.operating_hours) => 
 fillReviewsHTML = (reviews = self.restaurant.reviews) => {
   const container = document.getElementById('reviews-container');
   const title = document.createElement('h2');
+  title.className = 'reviews'
   title.innerHTML = 'Reviews';
   container.appendChild(title);
 
@@ -112,24 +115,32 @@ fillReviewsHTML = (reviews = self.restaurant.reviews) => {
   container.appendChild(ul);
 }
 
-/**
- * Create review HTML and add it to the webpage.
+/*
+  These p tags have class to make CSS design.
+  change : give className to all p tag
  */
 createReviewHTML = (review) => {
   const li = document.createElement('li');
   const name = document.createElement('p');
+  name.className = 'reviewHeader';
+  name.setAttribute("tabindex", "0");
   name.innerHTML = review.name;
   li.appendChild(name);
 
   const date = document.createElement('p');
+  date.className = 'reviewDate';
+  date.setAttribute("tabindex", "0");
   date.innerHTML = review.date;
   li.appendChild(date);
 
   const rating = document.createElement('p');
-  rating.innerHTML = `Rating: ${review.rating}`;
+  rating.className = 'reviewRating';
+  rating.setAttribute("tabindex", "0");
+  rating.innerHTML = `RATING: ${review.rating}`;
   li.appendChild(rating);
 
   const comments = document.createElement('p');
+  comments.className = 'reviewComment';
   comments.innerHTML = review.comments;
   li.appendChild(comments);
 
