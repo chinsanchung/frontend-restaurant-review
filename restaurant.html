@@ -33,11 +33,12 @@
     </section>
     <!-- End map -->
     <!-- Beginning restaurant -->
+    <!-- change : give tabindex to access with tab key -->
     <section id="restaurant-container">
-      <h1 id="restaurant-name"></h1>
+      <h1 id="restaurant-name" tabindex="0"></h1>
       <img id="restaurant-img">
-      <p id="restaurant-cuisine"></p>
-      <p id="restaurant-address"></p>
+      <p id="restaurant-cuisine" tabindex="0"></p>
+      <p id="restaurant-address" tabindex="0"></p>
       <table id="restaurant-hours"></table>
     </section>
     <!-- end restaurant -->
@@ -50,8 +51,9 @@
   <!-- End main -->
 
   <!-- Beginning footer -->
+  <!-- change : tabindex="-1" not to access with tab key. -->
   <footer id="footer">
-    Copyright (c) 2017 <a href="/"><strong>Restaurant Reviews</strong></a> All Rights Reserved.
+    Copyright (c) 2017 <a href="/" tabindex="-1"><strong>Restaurant Reviews</strong></a> All Rights Reserved.
   </footer>
   <!-- End footer -->
 
@@ -61,7 +63,7 @@
   <!-- Main javascript file -->
   <script type="text/javascript" src="js/restaurant_info.js"></script>
   <!-- Google Maps -->
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_tKbW6A5pQ-eupxI56myUnHLqYCzOjKo&libraries=places&callback=initMap"></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQzDYeihQyVFS3NhEU0pruH4DiKrKjrC0&libraries=places&callback=initMap"></script>
   <!-- End scripts -->
 
 </body>
