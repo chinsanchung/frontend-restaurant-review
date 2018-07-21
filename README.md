@@ -1,4 +1,5 @@
 # Restaurant Reviews project (Udacity Front-end Nanodegree)
+- This project only runs at google-map branch, not master branch.
 ## Tools
 - OS : Windows 10 Home
 - language: HTML, CSS, JavaScript
@@ -20,3 +21,4 @@
 ## Reference
 - [W3Schools](https://www.w3schools.com/)
 - [MDN web docs](https://developer.mozilla.org/ko/)
+- [stackoverflow](https://stackoverflow.com/)
