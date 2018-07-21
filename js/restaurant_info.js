@@ -172,3 +172,10 @@ getParameterByName = (name, url) => {
     return '';
   return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
+
+// change : service worker setting
+if('serviceWorker' in navigator) {
+  navigator.serviceWorker
+    .register('../sw.js')
+    .then(function() { console.log("service worker registered in restaurant_info.js"); })
+}
