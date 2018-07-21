@@ -74,7 +74,7 @@ nav h1 a {
     margin: 0;
 		witdh: auto;
 }
-/* change 01: Minimum size of breadcrumb class */
+/* change : Minimum size of breadcrumb class */
 @media screen and (min-width: 650px) {
 	#breadcrumb {
 		/* cut breadcrumb from 600px size */
@@ -191,8 +191,8 @@ nav h1 a {
   text-decoration: none;
   text-transform: uppercase;
 }
-/* change 02: Minimum size of main HTML */
-@media screen and (max-width: 650px) {
+/* change : Minimum size of main HTML */
+@media screen and (max-width: 750px) {
 	#restaurants-list {
 		grid-template-columns: 1;
 	}
@@ -200,13 +200,20 @@ nav h1 a {
 		margin: auto auto 10px auto;
 	}
 }
-/* change 03: Maximum size of main HTML  */
-@media screen and (min-width: 651px) {
+
+/* change : Middle size of main HTML  */
+@media screen and (min-width: 751px) and (max-width: 1499px) {
 	#restaurants-list {
-		grid-template-columns: auto auto auto;
+		grid-template-columns: auto auto;
 	}
 	#restaurants-list li {
 		margin: 15px;
+	}
+}
+/* change : Maximum size of main HTML */
+@media screen and (min-width: 1500px) {
+	#restaurants-list {
+		grid-template-columns: auto auto auto;
 	}
 }
 /* ====================== Restaurant Details ====================== */
@@ -216,7 +223,7 @@ nav h1 a {
   width: 100%;
   z-index: 1000;
 }
-/* change 04: Reviews font style  */
+/* change : Reviews font style  */
 .reviews {
 	color: #f18200;
 	font-size: 2.1em;
@@ -257,7 +264,7 @@ nav h1 a {
 	margin: 0 20px 20px;
 	position: relative;
 	width: 85%;
-	/* change 05: Grid setting */
+	/* change : Grid setting */
 	grid-column-gap: 10px;
 	grid-template-columns: 3;
 	grid-auto-rows: auto;
@@ -269,7 +276,7 @@ nav h1 a {
   color: #666;
 }
 
-/* change 06: Review's CSS design */
+/* change : Review's CSS design */
 .reviewHeader {
 	grid-column: 1 / 4;
 	grid-row: 1;
@@ -294,7 +301,7 @@ nav h1 a {
 	grid-column: 1 / 4;
 	grid-row: 3;
 }
-/* change 07: Minimum size of restaurant HTML */
+/* change : Minimum size of restaurant HTML */
 @media screen and (max-width: 650px) {
 	.inside #map-container {
 	  height: 30%;
@@ -323,7 +330,7 @@ nav h1 a {
 		width: 90%;
 	}
 }
-/* change 08: Maximum size of restaurant HTML */
+/* change : Maximum size of restaurant HTML */
 @media screen and (min-width: 651px) {
 	.inside #map-container {
 	  background: blue none repeat scroll 0 0;
