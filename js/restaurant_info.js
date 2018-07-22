@@ -1,41 +1,10 @@
 let restaurant;
-var newMap;
+var map;
 
 /**
- * Initialize map as soon as the page is loaded.
+ * Initialize Google map, called from HTML.
  */
-document.addEventListener('DOMContentLoaded', (event) => {  
-  initMap();
-});
-
-/**
- * Initialize leaflet map
- */
-initMap = () => {
-  fetchRestaurantFromURL((error, restaurant) => {
-    if (error) { // Got an error!
-      console.error(error);
-    } else {      
-      self.newMap = L.map('map', {
-        center: [restaurant.latlng.lat, restaurant.latlng.lng],
-        zoom: 16,
-        scrollWheelZoom: false
-      });
-      L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.jpg70?access_token={mapboxToken}', {
-        mapboxToken: '<your MAPBOX API KEY HERE>',
-        maxZoom: 18,
-        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
-          '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-          'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-        id: 'mapbox.streets'    
-      }).addTo(newMap);
-      fillBreadcrumb();
-      DBHelper.mapMarkerForRestaurant(self.restaurant, self.newMap);
-    }
-  });
-}  
- 
-/* window.initMap = () => {
+window.initMap = () => {
   fetchRestaurantFromURL((error, restaurant) => {
     if (error) { // Got an error!
       console.error(error);
@@ -49,7 +18,7 @@ initMap = () => {
       DBHelper.mapMarkerForRestaurant(self.restaurant, self.map);
     }
   });
-} */
+}
 
 /**
  * Get current restaurant from page URL.
@@ -88,6 +57,8 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
 
   const image = document.getElementById('restaurant-img');
   image.className = 'restaurant-img'
+  //change : Give alt attribute to restaurant's image.
+  image.setAttribute("alt", `This is ${restaurant.name} image`);
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
 
   const cuisine = document.getElementById('restaurant-cuisine');
@@ -126,7 +97,8 @@ fillRestaurantHoursHTML = (operatingHours = self.restaurant.operating_hours) => 
  */
 fillReviewsHTML = (reviews = self.restaurant.reviews) => {
   const container = document.getElementById('reviews-container');
-  const title = document.createElement('h2');
+  const title = document.createElement('h4');
+  title.className = 'reviews'
   title.innerHTML = 'Reviews';
   container.appendChild(title);
 
@@ -143,24 +115,32 @@ fillReviewsHTML = (reviews = self.restaurant.reviews) => {
   container.appendChild(ul);
 }
 
-/**
- * Create review HTML and add it to the webpage.
+/*
+  These p tags have class to make CSS design.
+  change : give className to all p tag
  */
 createReviewHTML = (review) => {
   const li = document.createElement('li');
   const name = document.createElement('p');
+  name.className = 'reviewHeader';
+  name.setAttribute("tabindex", "0");
   name.innerHTML = review.name;
   li.appendChild(name);
 
   const date = document.createElement('p');
+  date.className = 'reviewDate';
+  date.setAttribute("tabindex", "0");
   date.innerHTML = review.date;
   li.appendChild(date);
 
   const rating = document.createElement('p');
-  rating.innerHTML = `Rating: ${review.rating}`;
+  rating.className = 'reviewRating';
+  rating.setAttribute("tabindex", "0");
+  rating.innerHTML = `RATING: ${review.rating}`;
   li.appendChild(rating);
 
   const comments = document.createElement('p');
+  comments.className = 'reviewComment';
   comments.innerHTML = review.comments;
   li.appendChild(comments);
 
@@ -191,4 +171,11 @@ getParameterByName = (name, url) => {
   if (!results[2])
     return '';
   return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
+
+// change : service worker setting
+if('serviceWorker' in navigator) {
+  navigator.serviceWorker
+    .register('../sw.js')
+    .then(function() { console.log("service worker registered in restaurant_info.js"); })
 }
