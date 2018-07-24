@@ -64,14 +64,6 @@
   <script type="text/javascript" src="js/restaurant_info.js"></script>
   <!-- Google Maps -->
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQzDYeihQyVFS3NhEU0pruH4DiKrKjrC0&libraries=places&callback=initMap"></script>
-  <!-- change : service worker setting -->
-  <script>
-    if('serviceWorker' in navigator) {
-      navigator.serviceWorker
-        .register('/sw.js')
-        .then(function() { console.log("service worker registered in restaurant.html"); })
-    }
-  </script>
   <!-- End scripts -->
 
 </body>
