@@ -1,7 +1,8 @@
 /* change: This js file has service worker codes.  */
+let serviceCache = 'restaurant-03'
 self.addEventListener('install', function(event) {
   event.waitUntil(
-    caches.open('restaurant-app')
+    caches.open(serviceCache)
     .then(function(cache) {
       return cache.addAll([
         'restaurant.html',
@@ -24,6 +25,9 @@ self.addEventListener('install', function(event) {
   );
 });
 
+
+
+//Make service worker to have fetch event
 self.addEventListener('fetch', function(event) {
   event.respondWith(
     caches.match(event.request).then(function(response) {
@@ -31,4 +35,20 @@ self.addEventListener('fetch', function(event) {
       return fetch(event.request);
     })
   )
+});
+
+//Activate service worker
+self.addEventListener('activate', function(event) {
+  event.waitUntil(
+    caches.keys().then(function(cacheNames) {
+      return Promise.all(
+        cacheNames.filter(function(cacheName) {
+          return cacheName.startsWith('restaurant-') &&
+            cacheName != serviceCache;
+        }).map(function(cacheName) {
+          return caches.delete(cacheName);
+        })
+      );
+    })
+  );
 });
