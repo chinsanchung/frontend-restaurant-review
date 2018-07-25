@@ -159,7 +159,7 @@ createRestaurantHTML = (restaurant) => {
   li.append(address);
 
   const more = document.createElement('a');
-  more.innerHTML = 'View Details';
+  more.innerHTML = `View Details of ${restaurant.name}`;
   more.href = DBHelper.urlForRestaurant(restaurant);
   more.setAttribute('role', 'button');
   li.append(more)
@@ -185,6 +185,6 @@ if (navigator.serviceWorker) {
       .then(function (reg) {
         console.log("Service Worker successfuly registered");
       }).catch(function () {
-        console.log("Service Worker is not registered!");
+        console.log("Service Worker is not registered");
       });
 };
