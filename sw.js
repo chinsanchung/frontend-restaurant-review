@@ -1,15 +1,14 @@
 /* change: This js file has service worker codes.  */
-let serviceCache = 'restaurant-03'
+let serviceCache = 'restaurant-04'
 self.addEventListener('install', function(event) {
-  event.waitUntil(
-    caches.open(serviceCache)
-    .then(function(cache) {
+    caches.open(serviceCache).then(function(cache) {
       return cache.addAll([
         'restaurant.html',
         'index.html',
         'js/main.js',
         'js/restaurant_info.js',
         'css/styles.css',
+        'sw.js',
         'img/1.jpg',
         'img/2.jpg',
         'img/3.jpg',
@@ -22,7 +21,6 @@ self.addEventListener('install', function(event) {
         'img/10.jpg'
       ]);
     })
-  );
 });
 
 
@@ -30,11 +28,15 @@ self.addEventListener('install', function(event) {
 //Make service worker to have fetch event
 self.addEventListener('fetch', function(event) {
   event.respondWith(
-    caches.match(event.request).then(function(response) {
-      if (response) return response;
-      return fetch(event.request);
+    caches.open(serviceCache).then(function(cache) {
+      return cache.match(event.request).then(function(response) {
+        return response || fetch(event.request).then(function(response) {
+          cache.put(event.request, response.clone());
+          return response;
+        });
+      });
     })
-  )
+  );
 });
 
 //Activate service worker
