@@ -23,8 +23,6 @@ self.addEventListener('install', function(event) {
     })
 });
 
-
-
 //Make service worker to have fetch event
 self.addEventListener('fetch', function(event) {
   event.respondWith(
