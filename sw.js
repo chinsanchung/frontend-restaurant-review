@@ -1,7 +1,8 @@
 /* change: This js file has service worker codes.  */
 let serviceCache = 'restaurant-04'
 self.addEventListener('install', function(event) {
-    caches.open(serviceCache).then(function(cache) {
+
+    caches.open(serviceCache).then((cache) => {
       return cache.addAll([
         'restaurant.html',
         'index.html',
@@ -19,12 +20,14 @@ self.addEventListener('install', function(event) {
         'img/8.jpg',
         'img/9.jpg',
         'img/10.jpg'
-      ]);
+      ]).then(() => self.skipWaiting());
     })
+
 });
 
 //Make service worker to have fetch event
 self.addEventListener('fetch', function(event) {
+  console.log(event.request.url);
   event.respondWith(
     caches.open(serviceCache).then(function(cache) {
       return cache.match(event.request).then(function(response) {
