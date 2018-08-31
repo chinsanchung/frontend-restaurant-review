@@ -8,7 +8,7 @@ self.addEventListener('install', (event) => {
         'index.html',
         'js/main.js',
         'js/restaurant_info.js',
-        'css/styles.css',
+        'styles/css/styles.css',
         'sw.js',
         'img/1.jpg',
         'img/2.jpg',
