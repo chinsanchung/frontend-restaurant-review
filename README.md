@@ -26,3 +26,7 @@
 - [MDN web docs](https://developer.mozilla.org/ko/)
 - [stackoverflow](https://stackoverflow.com/)
 - [Google Developers: Service worker](https://developers.google.com/web/fundamentals/primers/service-workers/?hl=ko)
+
+## Images
+![res01](https://github.com/chinsanchung/frontend-restaurant-review/blob/master/images/res01.jpg)
+![res02](https://github.com/chinsanchung/frontend-restaurant-review/blob/master/images/res02.jpg)
