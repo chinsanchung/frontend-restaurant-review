@@ -1,0 +1,28 @@
+{
+  "name": "frontend-restaurant-review",
+  "version": "1.0.0",
+  "description": "- This project only runs at google-map branch, not master branch.\r ## Tools\r - OS : Windows 10 Home\r - language: HTML, CSS, JavaScript\r - tools : Atom text editor, Github Desktop, Service Worker",
+  "main": "sw.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chinsanchung/frontend-restaurant-review.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chinsanchung/frontend-restaurant-review/issues"
+  },
+  "homepage": "https://github.com/chinsanchung/frontend-restaurant-review#readme",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-eslint": "^5.0.0"
+  },
+  "devDependencies": {
+    "eslint-config-google": "^0.9.1",
+    "gulp-autoprefixer": "^6.0.0",
+    "gulp-sass": "^4.0.1"
+  }
+}
